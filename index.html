@@ -54,25 +54,25 @@
 
         /* Sistem Slide */
         .slide {
-            position: absolute;
-            width: 90%;
-            max-width: 500px;
-            padding: 40px 30px;
-            background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-            text-align: center;
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.95) translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 5;
-        }
+    position: absolute;
+    width: 95%;            /* Dinaikkan dari 90% agar lebih memanfaatkan lebar layar */
+    max-width: 600px;      /* DIUBAH: Dari 500px menjadi 600px agar kotaknya jauh lebih lebar */
+    padding: 50px 40px;    /* DIUBAH: Dari 40px 30px menjadi 50px 40px agar ruang di dalamnya lebih lega */
+    background: var(--card-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95) translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+}
 
         .slide.active {
             opacity: 1;
@@ -136,12 +136,12 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
         .cake-image {
-    width: 140px; /* Atur ukuran lebar kue sesuai selera */
+    width: 190px; /* Sedikit diperbesar agar seimbang dengan ukuran kotak abu yang baru */
     height: auto;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 25px auto;
     display: block;
-    filter: drop-shadow(0 10px 15px rgba(255, 51, 102, 0.3)); /* Efek glow tipis di bawah kue */
-    animation: floatCake 3s ease-in-out infinite; /* Animasi mengambang smooth */
+    filter: drop-shadow(0 10px 15px rgba(255, 51, 102, 0.3));
+    animation: floatCake 3s ease-in-out infinite;
 }
 
 /* Animasi naik-turun halus untuk kue */
