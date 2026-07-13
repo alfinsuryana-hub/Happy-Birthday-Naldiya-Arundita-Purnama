@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Naldiya Arundita Purnama ✨</title>
-    <!-- Google Fonts untuk Tipografi Premium -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Script Lottie Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     
     <style>
         :root {
@@ -36,7 +38,6 @@
             overflow: hidden;
         }
 
-        /* Kelopak Mawar Estetik */
         .petal {
             position: absolute;
             background: radial-gradient(circle at 30% 30%, #ff4d79, #990026);
@@ -52,7 +53,6 @@
             100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Sistem Slide Global */
         .slide {
             position: absolute;
             width: 90%;
@@ -80,7 +80,6 @@
             transform: scale(1) translateY(0);
         }
 
-        /* Elemen Tipografi & Tombol */
         h1.main-title {
             font-family: var(--font-serif);
             font-size: 2rem;
@@ -102,12 +101,10 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: var(--font-sans);
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
         }
 
         .btn-premium:hover {
@@ -123,7 +120,6 @@
             margin-top: 25px;
         }
 
-        /* --- DESAIN SLIDE 2 --- */
         .mid-image {
             width: 100%;
             max-width: 260px;
@@ -135,7 +131,6 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* --- DESAIN SLIDE 3 (MEDIA SHOWCASE) --- */
         .media-container {
             position: relative;
             width: 100%;
@@ -170,92 +165,63 @@
             display: block;
         }
 
-        /* --- DESAIN SURAT INTERAKTIF (SLIDE 3 KEDUA) --- */
-        .envelope-wrapper {
+        /* --- DESAIN BARU: KONTANER LOTTIE AMPLOP --- */
+        .lottie-envelope-container {
             display: none;
-            perspective: 1000px;
-            margin: 40px auto 20px auto;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            position: relative;
             cursor: pointer;
         }
 
-        .envelope {
-            position: relative;
-            width: 280px;
-            height: 180px;
-            background: #2a161a;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            transition: transform 0.5s;
-            margin: 0 auto;
+        lottie-player {
+            width: 100%;
+            height: auto;
         }
 
-        /* Penutup Surat Atas */
-        .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 140px solid transparent;
-            border-right: 140px solid transparent;
-            border-top: 100px solid #3d2126;
-            transform-origin: top;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 3;
-        }
-
-        /* Efek Buka Surat */
-        .envelope.open::before {
-            transform: rotateX(180deg);
-            z-index: 1;
-        }
-
-        .letter-content {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
+        /* Isi Surat Pop-Up Mulus */
+        .letter-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%) scale(0.9);
+            width: 90%;
+            max-width: 420px;
+            height: auto;
+            max-height: 75vh;
             background: #fffbfa;
             color: #2b1115;
-            padding: 20px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            text-align: left;
+            padding: 30px 25px;
+            border-radius: 24px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        opacity 0.6s ease,
+                        visibility 0.6s ease;
             overflow-y: auto;
-            transition: transform 0.6s ease;
-            z-index: 2;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
-            max-height: 160px;
         }
 
-        /* Kertas Keluar dari Amplop */
-        .envelope.open .letter-content {
-            transform: translateY(-120px) scale(1.05);
-            max-height: 320px;
-            height: 300px;
-            position: fixed;
-            width: 90%;
-            max-width: 400px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 100;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            font-family: var(--font-sans);
+        .letter-overlay.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .letter-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
             font-style: italic;
             white-space: pre-line;
+            text-align: left;
         }
 
         .click-hint {
             font-size: 0.85rem;
             color: var(--accent-color);
-            margin-top: 15px;
+            margin-top: 10px;
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse { 0%, 100% {opacity: 0.6;} 50% {opacity: 1;} }
@@ -263,8 +229,6 @@
 </head>
 <body>
 
-    <!-- Background Audio (Elemen Musik Tersembunyi) -->
-    <!-- GANTI 'link_audio_kamu_disini' dengan URL file mp3 jika ada -->
     <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
     <!-- SLIDE 1: INTRO -->
@@ -275,8 +239,6 @@
 
     <!-- SLIDE 2: GATEWAY & MUSIC -->
     <div id="slide-2" class="slide">
-        <!-- Gambar Tengah Agak Besar -->
-        <!-- GANTI 'link_gambar_tengah' dengan foto kalian berdua atau Naldiya -->
         <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600" class="mid-image" alt="Romantic Asset">
         <h1 class="main-title" style="font-size: 1.5rem; margin-bottom: 15px;">Sebelum Melangkah Lebih Jauh..</h1>
         <p style="color:#b3b3b3; font-size: 0.9rem; margin-bottom: 20px;">Nyalakan musiknya agar suasana terasa lebih hangat.</p>
@@ -287,66 +249,58 @@
         </div>
     </div>
 
-    <!-- SLIDE 3: MEDIA SHOWCASE & SURAT RAHASIA -->
+    <!-- SLIDE 3: MEDIA SHOWCASE & LOTTIE SURAT -->
     <div id="slide-3" class="slide">
-        <!-- Wadah Tampilan Foto & Video Berkala -->
         <div id="showcase-area" class="media-container">
-            <!-- Item 1: Foto -->
             <div class="showcase-item active">
                 <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600" alt="Foto Naldiya 1">
             </div>
-            <!-- Item 2: Foto Kedua -->
             <div class="showcase-item">
                 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600" alt="Foto Naldiya 2">
             </div>
-            <!-- Item 3: Contoh Video (Ganti src dengan video Naldiya) -->
             <div class="showcase-item">
                 <video src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-girl-with-neon-light-on-her-face-41775-large.mp4" loop muted autoplay></video>
             </div>
         </div>
 
-        <!-- Bagian Amplop Surat yang muncul setelah showcase media selesai -->
-        <div id="envelope-section" class="envelope-wrapper" onclick="openLetter()">
-            <div id="main-envelope" class="envelope">
-                <div class="letter-content">
-                    <div class="letter-text">Hai Cantik, Selamat Ulang Tahun yaaa yang ke 22 tahun. Ciee dah 22 tahun ajaa ahahahaha, aku gabisa buat banyak untuk hari Spesial kamu inii, aku juga gak bisa kasih kado yang mewah juga gak bisa ngasih yang terbaik jugaa.. Tapi aku berusaha lewat web ini karena ilmu pengetahuanku juga aku bangun web Kado Ulang Tahun kamuu.
+        <!-- Wadah Baru: Animasi Amplop Lottie Premium -->
+        <div id="lottie-section" class="lottie-envelope-container" onclick="triggerLetterOpen()">
+            <!-- Menggunakan Animasi Amplop Vektor Interaktif -->
+            <lottie-player id="envelope-player" src="https://assets3.lottiefiles.com/packages/lf20_W89m7C.json" speed="1" style="width: 100%; height: auto;"></lottie-player>
+            <div class="click-hint">✉️ Ketuk amplop untuk membaca surat</div>
+        </div>
+    </div>
+
+    <!-- Kertas Surat yang Akan Muncul dari Tengah dengan Transisi Cinematic -->
+    <div id="popup-letter" class="letter-overlay">
+        <div class="letter-text">Hai Cantik, Selamat Ulang Tahun yaaa yang ke 22 tahun. Ciee dah 22 tahun ajaa ahahahaha, aku gabisa buat banyak untuk hari Spesial kamu inii, aku juga gak bisa kasih kado yang mewah juga gak bisa ngasih yang terbaik jugaa.. Tapi aku berusaha lewat web ini karena ilmu pengetahuanku juga aku bangun web Kado Ulang Tahun kamuu.
 
 Naldiya Arundita Purnama nama yang aku kenal dari dia SMP kelas 3 sampai hingga detik ini. Banyak hal yang telah dilalui dari mulai dekat terus jauh lagi dekat lagi, yang paling aku ingat itu moment aku ketemu lagi kamu di SMA 2 sihh... itu kayaknya kita deket cuman seminggu, aku ga sengaja lihat kamu.. itu aku posisinya emang pengen deket lagi sama kamu sihh tapi yang buat aku kaget itu kamu tiba-tiba aja ngajak pacaran yang keadaannya kamu punya pacar, pada saat itu sejujurnya aku gamau karena kalopun aku diposisi laki2 nya aku bakal sakit, tapi setelah aku resapi lagi aku juga sangat terpukul sama menyesal sihh sampai ya bisa dibilang sekarang lah, kenapa aku ga ambil kesempatan itu yaa.
 
 Tapi aku yakin sih lambat laun aku dan kamu bakal diposisi itu juga kelak, hari ini aku nikmatin prosesnya bareng-bareng.. Semoga di tahun ini kamu dapet kebaikan yang berlipat ganda, semoga kamu dikelilingi oleh orang baik, dilancarkan milik rezekinya menjadi anak yang Sholehah dan semoga kamu sayang sama aku ya ahahhahahaa... 
 
 Happy Birthday yaa dodoy imuttt 🤍</div>
-                </div>
-            </div>
-            <div class="click-hint">✉️ Klik amplop untuk membuka surat</div>
-        </div>
     </div>
 
     <script>
         const music = document.getElementById('bg-music');
         const btnMusic = document.getElementById('btn-music');
+        const lottiePlayer = document.getElementById('envelope-player');
 
-        // Fungsi Perpindahan Slide yang Mulus
         function navigateTo(slideNumber) {
-            // Hilangkan semua kelas active
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            
-            // Aktifkan slide target
             setTimeout(() => {
                 const targetSlide = document.getElementById(`slide-${slideNumber}`);
                 targetSlide.classList.add('active');
-
-                // Jika masuk ke slide 3, jalankan transisi pameran foto berkala
                 if(slideNumber === 3) {
                     startMediaShowcase();
                 }
             }, 300);
         }
 
-        // Kontrol Musik Play/Pause
         function toggleMusic() {
             if (music.paused) {
-                music.play().catch(e => console.log("User interaction required first"));
+                music.play().catch(e => console.log("Music blocked"));
                 btnMusic.innerText = "⏸️ Pause Music";
             } else {
                 music.pause();
@@ -354,7 +308,6 @@ Happy Birthday yaa dodoy imuttt 🤍</div>
             }
         }
 
-        // Logika Transisi Foto/Video ke Surat di Slide 3
         function startMediaShowcase() {
             const items = document.querySelectorAll('.showcase-item');
             let currentIndex = 0;
@@ -366,23 +319,27 @@ Happy Birthday yaa dodoy imuttt 🤍</div>
                 if (currentIndex < items.length) {
                     items[currentIndex].classList.add('active');
                 } else {
-                    // Jika semua media sudah ditampilkan, ganti area media dengan Surat Berharga
                     clearInterval(interval);
                     document.getElementById('showcase-area').style.display = 'none';
                     
-                    const envSection = document.getElementById('envelope-section');
-                    envSection.style.display = 'block';
+                    // Tampilkan bagian Lottie
+                    document.getElementById('lottie-section').style.display = 'block';
                 }
-            }, 3500); // Durasi per foto tampil (3.5 detik)
+            }, 3500);
         }
 
-        // Membuka Surat Interaktif
-        function openLetter() {
-            const env = document.getElementById('main-envelope');
-            env.classList.toggle('open');
+        // FUNGSI UTAMA: Mainkan Animasi Lottie & Keluarkan Surat
+        function triggerLetterOpen() {
+            // Jalankan animasi amplop membuka (Lottie)
+            lottiePlayer.play();
+            
+            // Beri jeda 800ms saat animasi amplop terbuka, lalu munculkan surat dengan pop-up smooth
+            setTimeout(() => {
+                document.getElementById('popup-letter').classList.add('show');
+            }, 800);
         }
 
-        // Generator Kelopak Mawar Gugur Otomatis
+        // Efek Kelopak Mawar
         function spawnPetal() {
             const petal = document.createElement('div');
             petal.classList.add('petal');
