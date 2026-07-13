@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Naldiya Arundita Purnama ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts Premium & Estetik Terbaru -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gradient: radial-gradient(circle at center, #140507 0%, #050102 100%);
-            --card-bg: rgba(22, 22, 22, 0.65);
-            --border-glow: rgba(255, 51, 102, 0.2);
-            --accent-color: #ff3366;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-        }
+    --bg-gradient: radial-gradient(circle at center, #140507 0%, #050102 100%);
+    --card-bg: rgba(22, 22, 22, 0.65);
+    --border-glow: rgba(255, 51, 102, 0.2);
+    --accent-color: #ff3366;
+    --font-serif: 'Cormorant Garamond', serif; /* Font judul baru */
+    --font-sans: 'Montserrat', sans-serif;       /* Font teks baru */
+}
 
         * {
             box-sizing: border-box;
@@ -80,31 +81,36 @@
         }
 
         h1.main-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            line-height: 1.4;
-            margin-bottom: 30px;
-            letter-spacing: -0.5px;
-            background: linear-gradient(180deg, #ffffff 0%, #e6e6e6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    font-family: var(--font-serif);
+    font-size: 2.2rem; /* Sedikit dinaikkan ukurannya karena font ini tipis anggun */
+    font-weight: 300;  /* Menggunakan font-weight tipis agar mewah */
+    line-height: 1.4;
+    margin-bottom: 30px;
+    letter-spacing: 2px; /* Memberikan space elegan antar huruf */
+    background: linear-gradient(180deg, #ffffff 0%, #e6e6e6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
         .btn-premium {
-            background: #1a1a1a;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 16px 32px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 16px 32px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* BARIS INI YANG MEMBUAT TEKS PASTI DI TENGAH */
+    gap: 10px;
+    width: 100%; /* OPSIONAL: Agar tombol di Slide 2 lebarnya seragam dan rapi */
+    max-width: 280px; /* OPSIONAL: Membatasi lebar tombol agar tidak terlalu panjang */
+    margin: 0 auto; /* OPSIONAL: Memastikan container tombol berada di tengah */
+}
 
         .btn-premium:hover {
             border-color: var(--accent-color);
@@ -129,6 +135,24 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.1);
         }
+        .cake-image {
+    width: 140px; /* Atur ukuran lebar kue sesuai selera */
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(255, 51, 102, 0.3)); /* Efek glow tipis di bawah kue */
+    animation: floatCake 3s ease-in-out infinite; /* Animasi mengambang smooth */
+}
+
+/* Animasi naik-turun halus untuk kue */
+@keyframes floatCake {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
 
         .media-container {
             position: relative;
@@ -239,16 +263,19 @@
     <audio id="bg-music" loop src="assets/lagu.mp3"></audio>
 
     <!-- SLIDE 1: INTRO -->
-    <div id="slide-1" class="slide active">
-        <h1 class="main-title">SELAMAT ULANG TAHUN<br>NALDIYA ARUNDITA PURNAMA 🌹</h1>
-        <button class="btn-premium" onclick="navigateTo(2)">Let's Go Inside! ✨</button>
-    </div>
+<div id="slide-1" class="slide active">
+    <!-- Gambar Kue Ulang Tahun dari Folder Assets -->
+    <img src="assets/kue.png" class="cake-image" alt="Birthday Cake">
+    
+    <h1 class="main-title">SELAMAT ULANG TAHUN<br>NALDIYA ARUNDITA PURNAMA 🌹</h1>
+    <button class="btn-premium" onclick="navigateTo(2)">Let's Go Inside! ✨</button>
+</div>
 
     <!-- SLIDE 2: GATEWAY & MUSIC -->
     <div id="slide-2" class="slide">
         <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600" class="mid-image" alt="Romantic Asset">
         <h1 class="main-title" style="font-size: 1.5rem; margin-bottom: 15px;">Sebelum Melangkah Lebih Jauh..</h1>
-        <p style="color:#b3b3b3; font-size: 0.9rem; margin-bottom: 20px;">Coba Doyyy Sambil di nyalain Musiknyaa</p>
+        <p style="color:#b3b3b3; font-size: 0.9rem; margin-bottom: 20px;">Coba doyyy sambil di play musiknyaa</p>
         
         <div class="btn-group">
             <button id="btn-music" class="btn-premium" onclick="toggleMusic()">🎵 Play Music</button>
