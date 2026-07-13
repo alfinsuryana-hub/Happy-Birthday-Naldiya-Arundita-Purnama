@@ -3,292 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Naldiya Arundita Purnama ✨</title>
+    <title>For Naldiya Arundita Purnama ✨</title>
+    <!-- Google Fonts untuk Tipografi Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Tema Gelap & Romantis Premium */
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --text-main: #ffffff;
-            --text-muted: #a6a6a6;
-            --heart-color: #ff3366;
-            --heart-glow: rgba(255, 51, 102, 0.4);
+            --bg-gradient: radial-gradient(circle at center, #140507 0%, #050102 100%);
+            --card-bg: rgba(22, 22, 22, 0.65);
+            --border-glow: rgba(255, 51, 102, 0.2);
+            --accent-color: #ff3366;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             user-select: none;
             -webkit-user-select: none;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
+            color: #ffffff;
+            font-family: var(--font-sans);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        .container {
-            width: 100%;
-            max-width: 450px;
-            padding: 40px 25px;
-            text-align: center;
+        /* Kelopak Mawar Estetik */
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, #ff4d79, #990026);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 2;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Sistem Slide Global */
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 30px;
             background: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-            border: 1px solid #2a2a2a;
-            margin: 20px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95) translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Elemen Tipografi & Tombol */
+        h1.main-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1.4;
+            margin-bottom: 30px;
             letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            background: linear-gradient(45deg, #fff, var(--text-muted));
+            background: linear-gradient(180deg, #ffffff 0%, #e6e6e6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 40px;
-        }
-
-        /* --- WIDGET LOVE METER BENTUK HATI --- */
-        .love-container {
-            position: relative;
-            width: 160px;
-            height: 140px;
-            margin: 0 auto 30px auto;
-        }
-
-        /* Membuat Masking Bentuk Hati */
-        .heart-shape {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #262626;
-            clip-path: url(#heart-path);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-        }
-
-        /* Efek Cairan/Isi di Dalam Hati */
-        .heart-fill {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0%; /* Mulai dari 0% */
-            background: linear-gradient(to top, #e60039, var(--heart-color));
-            transition: height 0.1s linear;
-        }
-
-        /* Efek Gelombang Air (Glug-glug) */
-        .heart-fill::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -190%;
-            left: -50%;
-            background: rgba(26, 26, 26, 0.8);
-            border-radius: 40%;
-            animation: wave 5s infinite linear;
-        }
-
-        @keyframes wave {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Garis Luar Hati agar Menyala (Glow) */
-        .heart-border {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            fill: none;
-            stroke: #333;
-            stroke-width: 4;
-            filter: drop-shadow(0 0 0px var(--heart-color));
-            transition: filter 0.3s, stroke 0.3s;
-        }
-
-        .heart-border.glowing {
-            stroke: var(--heart-color);
-            filter: drop-shadow(0 0 12px var(--heart-color));
-        }
-
-        /* Teks Persentase di Bawah Hati */
-        .percentage {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-            color: var(--text-main);
-            transition: color 0.3s;
-        }
-
-        .percentage.maxed {
-            color: var(--heart-color);
-            text-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
-        }
-
-        .status-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            min-height: 20px;
-            margin-bottom: 35px;
-        }
-
-        /* Tombol Tahan (Hold Button) */
-        .btn-hold {
-            background: linear-gradient(135deg, #262626, #1f1f1f);
-            color: var(--text-muted);
+        .btn-premium {
+            background: #1a1a1a;
+            color: #fff;
             border: 1px solid #333;
-            padding: 16px 30px;
+            padding: 16px 32px;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 500;
             border-radius: 50px;
             cursor: pointer;
-            width: 100%;
-            outline: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            font-family: var(--font-sans);
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
+            text-decoration: none;
         }
 
-        .btn-hold:active {
-            transform: scale(0.98);
-            background: linear-gradient(135deg, var(--heart-color), #cc1144);
-            color: white;
-            border-color: var(--heart-color);
-            box-shadow: 0 0 20px var(--heart-glow);
+        .btn-premium:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--border-glow);
+            transform: translateY(-2px);
         }
 
-        /* Pesan Rahasia yang Muncul setelah 100% */
-        #secret-card {
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        /* --- DESAIN SLIDE 2 --- */
+        .mid-image {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            border-radius: 20px;
+            margin: 0 auto 20px auto;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- DESAIN SLIDE 3 (MEDIA SHOWCASE) --- */
+        .media-container {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            margin-bottom: 30px;
+        }
+
+        .showcase-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s ease;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .showcase-item.active {
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+        }
+
+        .showcase-item img, .showcase-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- DESAIN SURAT INTERAKTIF (SLIDE 3 KEDUA) --- */
+        .envelope-wrapper {
             display: none;
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255, 51, 102, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 51, 102, 0.2);
-            animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            color: #ffccd5;
-            font-style: italic;
-            line-height: 1.6;
+            perspective: 1000px;
+            margin: 40px auto 20px auto;
+            cursor: pointer;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .envelope {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            background: #2a161a;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transition: transform 0.5s;
+            margin: 0 auto;
         }
+
+        /* Penutup Surat Atas */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 100px solid #3d2126;
+            transform-origin: top;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+        }
+
+        /* Efek Buka Surat */
+        .envelope.open::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .letter-content {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: #fffbfa;
+            color: #2b1115;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            text-align: left;
+            overflow-y: auto;
+            transition: transform 0.6s ease;
+            z-index: 2;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            max-height: 160px;
+        }
+
+        /* Kertas Keluar dari Amplop */
+        .envelope.open .letter-content {
+            transform: translateY(-120px) scale(1.05);
+            max-height: 320px;
+            height: 300px;
+            position: fixed;
+            width: 90%;
+            max-width: 400px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            font-family: var(--font-sans);
+        }
+
+        .letter-text {
+            font-style: italic;
+            white-space: pre-line;
+        }
+
+        .click-hint {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-top: 15px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0%, 100% {opacity: 0.6;} 50% {opacity: 1;} }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Seberapa Sayang Kamu Aku?</h1>
-        <div class="subtitle">Khusus buat Naldiya Arundita Purnama ❤️</div>
+    <!-- Background Audio (Elemen Musik Tersembunyi) -->
+    <!-- GANTI 'link_audio_kamu_disini' dengan URL file mp3 jika ada -->
+    <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
-        <div class="love-container">
-            <div class="heart-shape">
-                <div id="heart-fill" class="heart-fill"></div>
+    <!-- SLIDE 1: INTRO -->
+    <div id="slide-1" class="slide active">
+        <h1 class="main-title">SELAMAT ULANG TAHUN<br>NALDIYA ARUNDITA PURNAMA 🌹</h1>
+        <button class="btn-premium" onclick="navigateTo(2)">Let's Go Inside! ✨</button>
+    </div>
+
+    <!-- SLIDE 2: GATEWAY & MUSIC -->
+    <div id="slide-2" class="slide">
+        <!-- Gambar Tengah Agak Besar -->
+        <!-- GANTI 'link_gambar_tengah' dengan foto kalian berdua atau Naldiya -->
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600" class="mid-image" alt="Romantic Asset">
+        <h1 class="main-title" style="font-size: 1.5rem; margin-bottom: 15px;">Sebelum Melangkah Lebih Jauh..</h1>
+        <p style="color:#b3b3b3; font-size: 0.9rem; margin-bottom: 20px;">Nyalakan musiknya agar suasana terasa lebih hangat.</p>
+        
+        <div class="btn-group">
+            <button id="btn-music" class="btn-premium" onclick="toggleMusic()">🎵 Play Music</button>
+            <button class="btn-premium" style="background: var(--accent-color); border-color: var(--accent-color);" onclick="navigateTo(3)">Lanjutkan Perjalanan ➔</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: MEDIA SHOWCASE & SURAT RAHASIA -->
+    <div id="slide-3" class="slide">
+        <!-- Wadah Tampilan Foto & Video Berkala -->
+        <div id="showcase-area" class="media-container">
+            <!-- Item 1: Foto -->
+            <div class="showcase-item active">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600" alt="Foto Naldiya 1">
             </div>
-            <svg viewBox="0 0 32 29.6" style="position: absolute; width: 100%; height: 100%;">
-                <defs>
-                    <clipPath id="heart-path" clipPathUnits="objectBoundingBox" transform="scale(0.03125, 0.03378)">
-                        <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-                    </clipPath>
-                </defs>
-                <path id="svg-border" class="heart-border" d="M23.6,1c-3.2,0-6,2.5-7.6,5.4C14.4,3.5,11.6,1,8.4,1C4.3,1,1,4.3,1,8.4c0,8.7,8.9,11.1,15,20.1c5.7-8.9,15-11.5,15-20.1C31,4.3,27.7,1,23.6,1z"/>
-            </svg>
+            <!-- Item 2: Foto Kedua -->
+            <div class="showcase-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600" alt="Foto Naldiya 2">
+            </div>
+            <!-- Item 3: Contoh Video (Ganti src dengan video Naldiya) -->
+            <div class="showcase-item">
+                <video src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-girl-with-neon-light-on-her-face-41775-large.mp4" loop muted autoplay></video>
+            </div>
         </div>
 
-        <div id="percentage-text" class="percentage">0%</div>
-        <div id="status-text" class="status-text">Harus yakin nih pas mencetnya.. 🥺</div>
+        <!-- Bagian Amplop Surat yang muncul setelah showcase media selesai -->
+        <div id="envelope-section" class="envelope-wrapper" onclick="openLetter()">
+            <div id="main-envelope" class="envelope">
+                <div class="letter-content">
+                    <div class="letter-text">Hai Cantik, Selamat Ulang Tahun yaaa yang ke 22 tahun. Ciee dah 22 tahun ajaa ahahahaha, aku gabisa buat banyak untuk hari Spesial kamu inii, aku juga gak bisa kasih kado yang mewah juga gak bisa ngasih yang terbaik jugaa.. Tapi aku berusaha lewat web ini karena ilmu pengetahuanku juga aku bangun web Kado Ulang Tahun kamuu.
 
-        <button id="btn-love" class="btn-hold">
-            <span>❤️</span> Tahan buktikan cintamu
-        </button>
+Naldiya Arundita Purnama nama yang aku kenal dari dia SMP kelas 3 sampai hingga detik ini. Banyak hal yang telah dilalui dari mulai dekat terus jauh lagi dekat lagi, yang paling aku ingat itu moment aku ketemu lagi kamu di SMA 2 sihh... itu kayaknya kita deket cuman seminggu, aku ga sengaja lihat kamu.. itu aku posisinya emang pengen deket lagi sama kamu sihh tapi yang buat aku kaget itu kamu tiba-tiba aja ngajak pacaran yang keadaannya kamu punya pacar, pada saat itu sejujurnya aku gamau karena kalopun aku diposisi laki2 nya aku bakal sakit, tapi setelah aku resapi lagi aku juga sangat terpukul sama menyesal sihh sampai ya bisa dibilang sekarang lah, kenapa aku ga ambil kesempatan itu yaa.
 
-        <div id="secret-card">
-            "Selamat Ulang Tahun, Naldiya Arundita Purnama. Makasih ya udah bertahan sejauh ini dan selalu jadi alasan aku buat tersenyum. Di tempat paling sunyi dalam hatiku, namamu selalu jadi melodi paling indah. HBD Semestaku! 🌌✨"
+Tapi aku yakin sih lambat laun aku dan kamu bakal diposisi itu juga kelak, hari ini aku nikmatin prosesnya bareng-bareng.. Semoga di tahun ini kamu dapet kebaikan yang berlipat ganda, semoga kamu dikelilingi oleh orang baik, dilancarkan milik rezekinya menjadi anak yang Sholehah dan semoga kamu sayang sama aku ya ahahhahahaa... 
+
+Happy Birthday yaa dodoy imuttt 🤍</div>
+                </div>
+            </div>
+            <div class="click-hint">✉️ Klik amplop untuk membuka surat</div>
         </div>
     </div>
 
     <script>
-        const btnLove = document.getElementById('btn-love');
-        const heartFill = document.getElementById('heart-fill');
-        const svgBorder = document.getElementById('svg-border');
-        const percentText = document.getElementById('percentage-text');
-        const statusText = document.getElementById('status-text');
-        const secretCard = document.getElementById('secret-card');
+        const music = document.getElementById('bg-music');
+        const btnMusic = document.getElementById('btn-music');
 
-        let progress = 0;
-        let timer = null;
-        let isMaxed = false;
-
-        // Fungsi saat tombol Mulai Ditekan/Ditahan
-        function startFilling() {
-            if (isMaxed) return;
+        // Fungsi Perpindahan Slide yang Mulus
+        function navigateTo(slideNumber) {
+            // Hilangkan semua kelas active
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
             
-            svgBorder.classList.add('glowing');
-            statusText.innerText = "Nah gitu, jangan dilepas ya! Penasaran nih.. 😏";
+            // Aktifkan slide target
+            setTimeout(() => {
+                const targetSlide = document.getElementById(`slide-${slideNumber}`);
+                targetSlide.classList.add('active');
 
-            timer = setInterval(() => {
-                if (progress < 100) {
-                    progress += 1; // Kecepatan bertambahnya persentase
-                    heartFill.style.height = progress + '%';
-                    percentText.innerText = progress + '%';
-
-                    // Mengubah teks dinamis berdasarkan progres persen
-                    if (progress === 30) statusText.innerText = "Baru segini nih? Masa kalah ama rasa kangenku? 😜";
-                    if (progress === 60) statusText.innerText = "Dikit lagi! Jangan dilepas dulu ya sayang.. ❤️";
-                    if (progress === 85) statusText.innerText = "Duh deg-degan.. Hampir sampai! 😍";
-                } else {
-                    // Ketika sukses menyentuh 100%
-                    clearInterval(timer);
-                    isMaxed = true;
-                    percentText.classList.add('maxed');
-                    percentText.innerText = "100% 🎉";
-                    statusText.innerText = "Cintamu terbukti murni 100% tak terbatas! 🥰";
-                    btnLove.style.display = "none"; // Sembunyikan tombol
-                    secretCard.style.display = "block"; // Munculkan surat romantis
+                // Jika masuk ke slide 3, jalankan transisi pameran foto berkala
+                if(slideNumber === 3) {
+                    startMediaShowcase();
                 }
-            }, 40); // 40ms per kenaikan persen (bisa diganti untuk atur kecepatan)
+            }, 300);
         }
 
-        // Fungsi saat tombol Dilepas sebelum mencapai 100%
-        function stopFilling() {
-            if (isMaxed) return;
-            
-            clearInterval(timer);
-            svgBorder.classList.remove('glowing');
-            statusText.innerText = "Yah kok dilepas? Harus yakin dong, ayo tahan lagi! 🥺";
+        // Kontrol Musik Play/Pause
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().catch(e => console.log("User interaction required first"));
+                btnMusic.innerText = "⏸️ Pause Music";
+            } else {
+                music.pause();
+                btnMusic.innerText = "🎵 Play Music";
+            }
         }
 
-        // Event listener untuk perangkat Desktop (Mouse)
-        btnLove.addEventListener('mousedown', startFilling);
-        btnLove.addEventListener('mouseup', stopFilling);
-        btnLove.addEventListener('mouseleave', stopFilling);
+        // Logika Transisi Foto/Video ke Surat di Slide 3
+        function startMediaShowcase() {
+            const items = document.querySelectorAll('.showcase-item');
+            let currentIndex = 0;
 
-        // Event listener untuk perangkat Mobile/HP (Sentuhan Layar)
-        btnLove.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Mencegah klik ganda pada HP
-            startFilling();
-        });
-        btnLove.addEventListener('touchend', stopFilling);
+            const interval = setInterval(() => {
+                items[currentIndex].classList.remove('active');
+                currentIndex++;
+
+                if (currentIndex < items.length) {
+                    items[currentIndex].classList.add('active');
+                } else {
+                    // Jika semua media sudah ditampilkan, ganti area media dengan Surat Berharga
+                    clearInterval(interval);
+                    document.getElementById('showcase-area').style.display = 'none';
+                    
+                    const envSection = document.getElementById('envelope-section');
+                    envSection.style.display = 'block';
+                }
+            }, 3500); // Durasi per foto tampil (3.5 detik)
+        }
+
+        // Membuka Surat Interaktif
+        function openLetter() {
+            const env = document.getElementById('main-envelope');
+            env.classList.toggle('open');
+        }
+
+        // Generator Kelopak Mawar Gugur Otomatis
+        function spawnPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const size = Math.random() * 12 + 8;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            petal.style.left = Math.random() * 100 + 'vw';
+            const duration = Math.random() * 4 + 5;
+            petal.style.animationDuration = duration + 's';
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), duration * 1000);
+        }
+        setInterval(spawnPetal, 400);
     </script>
 </body>
 </html>
