@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD, Semesta Favoritku! 🍵💚</title>
+    <style>
+        /* Harmoni Warna Matcha & Krem */
+        :root {
+            --matcha-dark: #4F772D;
+            --matcha-main: #90A955;
+            --matcha-light: #ECF39E;
+            --matcha-cream: #F4F1DE;
+            --text-color: #31572C;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--matcha-cream);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(79, 119, 45, 0.15);
+            border: 2px solid var(--matcha-main);
+            margin: 20px;
+        }
+
+        h1 {
+            color: var(--matcha-dark);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: var(--matcha-main);
+            animation: pulse 1.5s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            background-color: var(--matcha-main);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(144, 169, 85, 0.4);
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: var(--matcha-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Pesan Rahasia */
+        #secret-message {
+            display: none;
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #F1F7ED;
+            border-radius: 10px;
+            border-left: 5px solid var(--matcha-main);
+            font-style: italic;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">🍵💚</div>
+        <h1>Selamat Ulang Tahun, Sayang!</h1>
+        <p>Seperti secangkir matcha hangat di pagi hari, kehadiranmu selalu menenangkan hatiku dan memberi harmoni dalam hidupku yang berisik.</p>
+        <p>Terima kasih sudah lahir ke dunia dan menjadi bagian terindah dalam ceritaku.</p>
+        
+        <button class="btn" onclick="tampilkanPesan()">Klik untuk Kado Kecil ✨</button>
+
+        <div id="secret-message">
+            <p>"Aku tidak punya kado mewah, tapi aku punya ruang paling luas di hatiku yang selalu siap merayakanmu setiap hari. Selamat bertambah usia, semesta favoritku!"</p>
+        </div>
+    </div>
+
+    <script>
+        function tampilkanPesan() {
+            var pesan = document.getElementById("secret-message");
+            if (pesan.style.display === "none" || pesan.style.display === "") {
+                pesan.style.display = "block";
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } else {
+                pesan.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
