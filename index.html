@@ -213,27 +213,28 @@
         }
 
         /* Surat Fisik (Slide Akhir Tersembunyi) */
-        .letter-fullscreen {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -48%);
-            width: 90%;
-            max-width: 440px;
-            height: auto;
-            max-height: 80vh;
-            background: #fffbfa;
-            color: #2b1115;
-            padding: 35px 25px;
-            border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            overflow-y: auto;
-            transition: opacity 1.2s ease 0.4s, 
-                        transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.4s;
-        }
+        /* Surat Fisik Fullscreen */
+.letter-fullscreen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    width: 92%;            /* Dinaikkan sedikit agar lebih memanfaatkan layar HP */
+    max-width: 600px;      /* DIUBAH: Dari 440px menjadi 600px agar surat jauh lebih lebar & megah */
+    height: auto;
+    max-height: 85vh;      /* DIUBAH: Dari 80vh menjadi 85vh agar memberi ruang vertikal lebih jika layar panjang */
+    background: #fffbfa;
+    color: #2b1115;
+    padding: 40px 35px;    /* DIUBAH: Jarak padding dalam diperlebar agar teks tidak terlalu mepet ke pinggir kertas */
+    border-radius: 28px;   /* Sudut sedikit diperhalus */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;      /* Otomatis memunculkan scrollbar jika teks melebihi tinggi layar HP */
+    transition: opacity 1.2s ease 0.4s, 
+                transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.4s;
+}
 
         .letter-fullscreen.show-final {
             opacity: 1;
@@ -242,11 +243,11 @@
         }
 
         .letter-text {
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.98rem;    /* Ukuran font sedikit dinaikkan agar pas dengan kertas yang lebar */
+    line-height: 1.8;      /* Jarak antar baris kalimat dibuat lebih renggang (1.8) agar super nyaman dibaca */
     font-style: italic;
     white-space: pre-line;
-    text-align: justify; /* Mengubah tulisan menjadi rata kanan-kiri agar rapi seperti surat asli */
+    text-align: justify;   /* Rata kanan-kiri yang rapi */
 }
         }
 
